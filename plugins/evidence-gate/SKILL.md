@@ -1,9 +1,9 @@
 ---
-name: verify
-description: "Force verification that work is actually complete and production-ready. Triggers: '/verify', 'double check', 'is it really done'. NOT for: spelling checks, trivial questions, simple confirmations."
+name: evidence-gate
+description: "Refuse claims of completion without proof. Force the agent to identify the command that would prove the claim, run it fresh, read the actual output, and report PASS/FAIL with evidence. Companion to fpf's calibration tags — the gate that makes [OBSERVED] tags trustworthy. Triggers: '/evidence-gate', 'prove it', 'double check', 'is it really done'. NOT for: spelling checks, trivial questions, simple confirmations."
 ---
 
-# Verification Before Completion
+# Evidence Gate — Refuse Completion Without Proof
 
 ## Iron Law
 

@@ -33,9 +33,9 @@ Routing matrix for sending work to another AI CLI. Tells you which model and whi
 
 Reasoning baseline plus a local builder for the full FPF corpus. The `SKILL.md` ships the always-loaded operational subset — ADI cycle, calibration tags, I/D/S discipline, weakest-link heuristic. A bundled `refresh.sh` script pulls the upstream [`ailev/FPF`](https://github.com/ailev/FPF) spec on first use and splits it into navigable modules, cards, and a relation graph; re-runs are a silent no-op when upstream hasn't moved (caches the commit SHA). No FPF text is bundled — every user builds their own derivative locally against the latest upstream. Requires `python3` (stdlib only) and `curl`.
 
-### [verify](plugins/verify/)
+### [evidence-gate](plugins/evidence-gate/)
 
-Refuses to claim completion without proof. Identifies the command that would prove the claim, runs it fresh, reads the actual output, and reports PASS or FAIL with the evidence. Companion to the tag discipline in `fpf` — verification is what makes `[OBSERVED]` tags trustworthy.
+Refuses to claim completion without proof. Identifies the command that would prove the claim, runs it fresh, reads the actual output, and reports PASS or FAIL with the evidence. Companion to the tag discipline in `fpf` — the gate that makes `[OBSERVED]` tags trustworthy.
 
 ## Template: AGENTS.md
 
@@ -54,7 +54,7 @@ It includes the universal core (Constitution, Calibration, FPF, Protocol) plus a
 - [`codex`](https://github.com/openai/codex)
 - [`gemini`](https://github.com/google-gemini/gemini-cli)
 
-`fpf` and `verify` are pure guidance — no external tooling needed.
+`evidence-gate` is pure guidance — no external tooling needed. `fpf` ships a builder for its corpus but no external tooling beyond `python3` and `curl`.
 
 ## Layout
 
@@ -66,7 +66,7 @@ It includes the universal core (Constitution, Calibration, FPF, Protocol) plus a
 │   ├── tribunal/
 │   ├── delegate/
 │   ├── fpf/
-│   └── verify/
+│   └── evidence-gate/
 └── templates/
     └── AGENTS.md
 ```

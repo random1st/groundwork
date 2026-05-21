@@ -1,5 +1,0 @@
-{
-  "name": "verify",
-  "version": "0.1.0",
-  "description": "Force verification before claiming completion. Every claim tested with a fresh tool call; evidence before assertions."
-}

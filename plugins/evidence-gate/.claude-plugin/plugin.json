@@ -1,0 +1,5 @@
+{
+  "name": "evidence-gate",
+  "version": "0.1.0",
+  "description": "Refuse claims of completion without proof. Every claim tested with a fresh tool call; evidence before assertions. Companion to fpf's tag discipline — the gate that makes [OBSERVED] tags trustworthy."
+}

@@ -149,7 +149,7 @@ Write directly only when no trigger below fires. Post-delegation: type-check / l
 Companion plugins in this marketplace:
 - `delegate` — Codex/Gemini CLI routing
 - `tribunal` — provider-relative independent audit
-- `verify` — verification-before-completion gate
+- `evidence-gate` — refuses completion claims without a fresh proof run
 - `fpf` — the reasoning baseline
 
 ## Code Review Standard
