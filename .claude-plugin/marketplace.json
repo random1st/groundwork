@@ -4,52 +4,27 @@
     "name": "Roman Voronin",
     "email": "voroninr@gmail.com"
   },
-  "description": "Personal Claude Code plugin marketplace — reasoning, audit, and meta-workflow skills extracted from a working dev/AI stack.",
+  "description": "Reasoning discipline for AI agents — cross-model audit, cross-CLI routing, a reasoning baseline, and a verification gate. Four plugins that turn a single AI session into a calibrated one.",
   "plugins": [
     {
       "name": "tribunal",
       "source": "./plugins/tribunal",
-      "description": "Provider-relative independent code audit. Current agent arbitrates; the two other CLIs (Claude, Codex, Gemini) review in parallel. For security-sensitive code, pre-merge gates, critical bug fixes."
+      "description": "Independent code review by two other AI CLIs. Whichever CLI you are running stays as the arbiter; the two others (any combo of Claude, Codex, Gemini) audit the code in parallel and you read both verdicts before deciding. Use for pre-merge reviews, security-critical code, and changes you don't want to ship alone."
     },
     {
       "name": "delegate",
       "source": "./plugins/delegate",
-      "description": "Unified external AI delegation — route tasks to Codex or Gemini based on cost/quality tradeoffs. Use for second opinions, deep reviews, large-context analysis."
+      "description": "Routing matrix for sending work to another AI CLI. Tells you which model and which reasoning effort to use for each task — code review, architecture analysis, whole-project scans, quick documentation. Uses raw codex exec and gemini binaries; no wrapper required."
     },
     {
       "name": "fpf",
       "source": "./plugins/fpf",
-      "description": "FPF reasoning baseline — ADI cycle (Abduction → Deduction → Induction), lifecycle stages (Explore → Shape → Evidence → Operate), I/D/S discipline, calibration tags. Applies on every non-trivial problem."
+      "description": "Reasoning baseline. Frame the problem before solving: generate multiple competing hypotheses, derive testable predictions, run the tests, update what you believe. Every factual claim must carry an evidence tag — observed, specified, inferred, or speculative. Apply on any non-trivial problem."
     },
     {
       "name": "verify",
       "source": "./plugins/verify",
-      "description": "Force verification that work is actually complete and production-ready. Triggers: 'double check', 'is it really done'. Not for trivial confirmations."
-    },
-    {
-      "name": "systematic-debugging",
-      "source": "./plugins/systematic-debugging",
-      "description": "Root-cause-first debugging methodology. Reproduce, isolate, hypothesize, fix at source. Use on any bug, test failure, or unexpected behavior."
-    },
-    {
-      "name": "dispatching-parallel-agents",
-      "source": "./plugins/dispatching-parallel-agents",
-      "description": "Pattern for splitting independent investigation domains across parallel agents. Use when 2+ unrelated failures/tasks have no shared state."
-    },
-    {
-      "name": "scratchpad",
-      "source": "./plugins/scratchpad",
-      "description": "Persistent working memory for multi-iteration tasks — TDD cycles, long refactors, iterate-style loops. Project-level state at .claude/scratchpad.md."
-    },
-    {
-      "name": "skill-creator",
-      "source": "./plugins/skill-creator",
-      "description": "Guide and scripts for creating effective Claude Code skills. Includes init_skill.py, package_skill.py, and design-pattern references."
-    },
-    {
-      "name": "create-agents",
-      "source": "./plugins/create-agents",
-      "description": "Create Claude Code agents — autonomous workers with isolated context and restricted tools. Distinguishes agents from skills, includes templates."
+      "description": "Refuses to claim completion without proof. Identifies the command that would prove the claim, runs it fresh, reads the actual output, and reports PASS or FAIL with the evidence. Companion to the tag discipline in fpf — verification is what makes [OBSERVED] tags trustworthy."
     }
   ]
 }

@@ -2,7 +2,9 @@
 
 Personal Claude Code plugin marketplace.
 
-Reasoning, audit, and meta-workflow skills extracted from a working dev/AI stack. No coupling to my personal runtime — each plugin uses raw CLIs (`claude`, `codex`, `gemini`) or standard Claude Code conventions.
+Four plugins that turn a single AI session into a calibrated one — independent multi-model audit, cross-CLI delegation, a reasoning baseline, and an evidence-before-claim verification gate. Plus a project-agnostic `AGENTS.md` template that documents the discipline behind them.
+
+No coupling to any personal runtime. Each plugin uses raw CLIs (`claude`, `codex`, `gemini`) or standard Claude Code conventions.
 
 ## Install
 
@@ -11,7 +13,7 @@ Reasoning, audit, and meta-workflow skills extracted from a working dev/AI stack
 /plugin install <plugin-name>@random1st-plugins
 ```
 
-Update the marketplace later:
+Update later:
 
 ```text
 /plugin marketplace update random1st-plugins
@@ -19,30 +21,40 @@ Update the marketplace later:
 
 ## Plugins
 
-| Plugin | What it is |
-|--------|-----------|
-| [tribunal](plugins/tribunal/) | Provider-relative independent audit. Current agent arbitrates; the two other CLIs review in parallel. For security-sensitive code, pre-merge gates, critical bug fixes. |
-| [delegate](plugins/delegate/) | Unified external AI delegation — Codex or Gemini, by cost/quality tradeoff. |
-| [fpf](plugins/fpf/) | FPF reasoning baseline — ADI cycle, lifecycle stages, I/D/S, calibration tags. The operational excerpt of the full FPF corpus. |
-| [verify](plugins/verify/) | Force verification before claiming completion. Evidence before assertions. |
-| [systematic-debugging](plugins/systematic-debugging/) | Root-cause-first debugging methodology. Four phases, no fixes without investigation. |
-| [dispatching-parallel-agents](plugins/dispatching-parallel-agents/) | Pattern for splitting independent investigations across parallel agents. |
-| [scratchpad](plugins/scratchpad/) | Persistent working memory for multi-iteration tasks. |
-| [skill-creator](plugins/skill-creator/) | Guide and scripts for creating effective Claude Code skills. |
-| [create-agents](plugins/create-agents/) | Create Claude Code agents — autonomous workers with isolated context and restricted tools. |
+### [tribunal](plugins/tribunal/)
 
-## Template: CLAUDE.md
+Independent code review by two other AI CLIs. Whichever CLI you are running stays as the arbiter; the two others (any combo of Claude, Codex, Gemini) audit the code in parallel and you read both verdicts before deciding. Use for pre-merge reviews, security-critical code, and changes you don't want to ship alone.
 
-The marketplace also ships a cleaned, project-agnostic [CLAUDE.md template](templates/CLAUDE.md) — the working reasoning/calibration/protocol discipline behind these plugins. Drop into `~/.claude/CLAUDE.md` and edit to taste.
+### [delegate](plugins/delegate/)
+
+Routing matrix for sending work to another AI CLI. Tells you which model and which reasoning effort to use for each task — code review, architecture analysis, whole-project scans, quick documentation. Uses raw `codex exec` and `gemini` binaries; no wrapper required.
+
+### [fpf](plugins/fpf/)
+
+Reasoning baseline. Frame the problem before solving: generate multiple competing hypotheses, derive testable predictions, run the tests, update what you believe. Every factual claim must carry an evidence tag — observed, specified, inferred, or speculative. Apply on any non-trivial problem.
+
+### [verify](plugins/verify/)
+
+Refuses to claim completion without proof. Identifies the command that would prove the claim, runs it fresh, reads the actual output, and reports PASS or FAIL with the evidence. Companion to the tag discipline in `fpf` — verification is what makes `[OBSERVED]` tags trustworthy.
+
+## Template: AGENTS.md
+
+[`templates/AGENTS.md`](templates/AGENTS.md) is one canonical instructions file usable by any agentic CLI. Same content, just copy to wherever your CLI looks:
+
+- Codex → `~/.codex/AGENTS.md` or `<repo>/AGENTS.md`
+- Claude Code → `~/.claude/CLAUDE.md` or `<repo>/CLAUDE.md`
+- Gemini → `~/.gemini/GEMINI.md` or `<repo>/GEMINI.md`
+
+It includes the universal core (Constitution, Calibration, FPF, Protocol) plus a compact CLI Quick Reference covering native mechanics of all three CLIs.
 
 ## Prerequisites
 
 `tribunal` and `delegate` shell out to `codex` and `gemini` CLIs. Install and authenticate them before use:
 
-- [`codex`](https://github.com/openai/codex) — OpenAI Codex CLI
-- [`gemini`](https://github.com/google-gemini/gemini-cli) — Google Gemini CLI
+- [`codex`](https://github.com/openai/codex)
+- [`gemini`](https://github.com/google-gemini/gemini-cli)
 
-Other plugins are pure guidance and need no external tooling.
+`fpf` and `verify` are pure guidance — no external tooling needed.
 
 ## Layout
 
@@ -54,26 +66,17 @@ Other plugins are pure guidance and need no external tooling.
 │   ├── tribunal/
 │   ├── delegate/
 │   ├── fpf/
-│   ├── verify/
-│   ├── systematic-debugging/
-│   ├── dispatching-parallel-agents/
-│   ├── scratchpad/
-│   ├── skill-creator/
-│   └── create-agents/
+│   └── verify/
 └── templates/
-    └── CLAUDE.md
+    └── AGENTS.md
 ```
 
-Each plugin is a single SKILL.md (or SKILL.md + bundled scripts/references) plus `.claude-plugin/plugin.json`.
+Each plugin is a single `SKILL.md` plus `.claude-plugin/plugin.json`.
 
 ## License
 
-MIT for marketplace-original content. Individual plugins may carry their own licenses where they bundle third-party material:
-
-- `plugins/skill-creator/` carries Apache 2.0 (from the original Anthropic `skill-creator`).
-
-See per-plugin LICENSE files where present.
+MIT.
 
 ## Related
 
-- Full FPF corpus (222 modules, formal spec): <https://github.com/system5-dev/s5d>
+- Full FPF corpus (formal spec, 222 modules): <https://github.com/system5-dev/s5d>

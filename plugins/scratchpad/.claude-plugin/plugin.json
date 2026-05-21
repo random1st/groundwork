@@ -1,5 +1,0 @@
-{
-  "name": "scratchpad",
-  "version": "0.1.0",
-  "description": "Persistent working memory for multi-iteration tasks. Status signals (IN_PROGRESS / TESTS_PASS / DONE / BLOCKED) drive iterate-style loops."
-}
