@@ -4,7 +4,7 @@
     "name": "Roman Voronin",
     "email": "voroninr@gmail.com"
   },
-  "description": "Reasoning discipline for AI agents — cross-model audit, cross-CLI routing, a reasoning baseline, and a verification gate. Four plugins that turn a single AI session into a calibrated one.",
+  "description": "Reasoning discipline for AI agents — cross-model audit, cross-CLI routing, a reasoning baseline plus its local corpus builder, and a verification gate. Five plugins that turn a single AI session into a calibrated one.",
   "plugins": [
     {
       "name": "tribunal",
