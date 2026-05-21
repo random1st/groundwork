@@ -33,6 +33,10 @@ Routing matrix for sending work to another AI CLI. Tells you which model and whi
 
 Reasoning baseline. Frame the problem before solving: generate multiple competing hypotheses, derive testable predictions, run the tests, update what you believe. Every factual claim must carry an evidence tag — observed, specified, inferred, or speculative. Apply on any non-trivial problem.
 
+### [fpf-modules](plugins/fpf-modules/)
+
+Deep-dive companion to `fpf`. Fetches the upstream [ailev/FPF](https://github.com/ailev/FPF) spec and builds an agent-navigable modular corpus locally — modules, cards, relation graph, plus agent navigation files (entrypoints, glossary, query-index). No FPF text is bundled; the builder rebuilds fresh against latest upstream on demand. Requires `python3` (stdlib only) and `curl`.
+
 ### [verify](plugins/verify/)
 
 Refuses to claim completion without proof. Identifies the command that would prove the claim, runs it fresh, reads the actual output, and reports PASS or FAIL with the evidence. Companion to the tag discipline in `fpf` — verification is what makes `[OBSERVED]` tags trustworthy.

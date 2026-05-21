@@ -22,6 +22,11 @@
       "description": "Reasoning baseline. Frame the problem before solving: generate multiple competing hypotheses, derive testable predictions, run the tests, update what you believe. Every factual claim must carry an evidence tag — observed, specified, inferred, or speculative. Apply on any non-trivial problem."
     },
     {
+      "name": "fpf-modules",
+      "source": "./plugins/fpf-modules",
+      "description": "Deep-dive companion to fpf. Fetches the upstream FPF spec from ailev/FPF and builds an agent-navigable modular corpus locally (modules, cards, relation graph, entrypoints, glossary, query-index). No FPF text is bundled — rebuilds fresh against the latest upstream on demand."
+    },
+    {
       "name": "verify",
       "source": "./plugins/verify",
       "description": "Refuses to claim completion without proof. Identifies the command that would prove the claim, runs it fresh, reads the actual output, and reports PASS or FAIL with the evidence. Companion to the tag discipline in fpf — verification is what makes [OBSERVED] tags trustworthy."

@@ -134,6 +134,7 @@ That is the loop. Everything else is decoration.
 ## Further reading
 
 - **Original FPF spec** — <https://github.com/ailev/FPF>. Anatoly Levenchuk's First Principles Framework: pattern language and core specification for admissible action in engineering, research, and mixed human/AI work. The canonical source for definitions, modules, and cross-references.
-- **`claude-code-fpf`** — <https://github.com/m0n0x41d/claude-code-fpf>. A separate public Claude Code skill that ships the full FPF spec as an embedded SQLite/FTS5 index with a `fpf-rag` binary. Install it alongside this plugin if you want on-demand deep search over the entire corpus (`fpf-rag search "<query>"`).
+- **`fpf-modules`** (this marketplace) — companion plugin that fetches `ailev/FPF` on demand and splits it into a navigable modular corpus locally (modules, cards, relation graph, entrypoint/glossary/query-index files). No FPF text is bundled; rebuilds against latest upstream. Install when you need on-demand deep search via markdown navigation.
+- **`m0n0x41d/claude-code-fpf`** — separate public Claude Code skill that ships the full FPF spec as an embedded SQLite/FTS5 index plus an `fpf-rag` Go binary. Different access pattern: CLI-tool query rather than markdown navigation. Pick whichever fits your workflow.
 
-This plugin is the always-on operational baseline. `claude-code-fpf` is the deep-dive companion when you need the spec text itself.
+This plugin is the always-on operational baseline. The two companions above are deep-dive options when you need the spec text itself.
