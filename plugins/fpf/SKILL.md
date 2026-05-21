@@ -5,9 +5,9 @@ description: "FPF reasoning baseline — ADI cycle (Abduction → Deduction → 
 
 # FPF — Reasoning Baseline
 
-FPF is a problem-framing discipline. Not a methodology, not a checklist. It's the **frame you put on a non-trivial problem before solving**.
+FPF (First Principles Framework) is a problem-framing discipline by [Anatoly Levenchuk](https://github.com/ailev). Not a methodology, not a checklist — the **frame you put on a non-trivial problem before solving**.
 
-This skill is a self-contained operational subset — the rules an agent actually executes during a task. The underlying corpus and full formal specification are not published.
+This skill is a self-contained operational subset: the rules an agent actually executes during a task. For the full formal corpus and deep-dive search, see [Further reading](#further-reading) below.
 
 ## When to apply
 
@@ -131,3 +131,9 @@ When applying FPF to a deliverable:
 
 That is the loop. Everything else is decoration.
 
+## Further reading
+
+- **Original FPF spec** — <https://github.com/ailev/FPF>. Anatoly Levenchuk's First Principles Framework: pattern language and core specification for admissible action in engineering, research, and mixed human/AI work. The canonical source for definitions, modules, and cross-references.
+- **`claude-code-fpf`** — <https://github.com/m0n0x41d/claude-code-fpf>. A separate public Claude Code skill that ships the full FPF spec as an embedded SQLite/FTS5 index with a `fpf-rag` binary. Install it alongside this plugin if you want on-demand deep search over the entire corpus (`fpf-rag search "<query>"`).
+
+This plugin is the always-on operational baseline. `claude-code-fpf` is the deep-dive companion when you need the spec text itself.

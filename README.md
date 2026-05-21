@@ -73,6 +73,11 @@ It includes the universal core (Constitution, Calibration, FPF, Protocol) plus a
 
 Each plugin is a single `SKILL.md` plus `.claude-plugin/plugin.json`.
 
+## Related
+
+- **[`ailev/FPF`](https://github.com/ailev/FPF)** — Anatoly Levenchuk's original First Principles Framework spec, which the `fpf` plugin distils into an operational subset.
+- **[`m0n0x41d/claude-code-fpf`](https://github.com/m0n0x41d/claude-code-fpf)** — a separate public Claude Code skill that ships the full FPF corpus as an embedded SQLite/FTS5 index with a `fpf-rag` search binary. Install alongside this marketplace's `fpf` plugin if you want deep on-demand search over the spec text.
+
 ## License
 
 MIT.
