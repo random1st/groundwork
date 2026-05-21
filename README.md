@@ -1,6 +1,6 @@
-# random1st / claude-plugins
+# groundwork
 
-Personal Claude Code plugin marketplace.
+Personal Claude Code plugin marketplace — `random1st/groundwork`.
 
 Four plugins that turn a single AI session into a calibrated one — independent multi-model audit, cross-CLI delegation, a reasoning baseline, and an evidence-before-claim verification gate. Plus a project-agnostic `AGENTS.md` template that documents the discipline behind them.
 
@@ -9,14 +9,14 @@ No coupling to any personal runtime. Each plugin uses raw CLIs (`claude`, `codex
 ## Install
 
 ```text
-/plugin marketplace add random1st/claude-plugins
-/plugin install <plugin-name>@random1st-plugins
+/plugin marketplace add random1st/groundwork
+/plugin install <plugin-name>@groundwork
 ```
 
 Update later:
 
 ```text
-/plugin marketplace update random1st-plugins
+/plugin marketplace update groundwork
 ```
 
 ## Plugins
