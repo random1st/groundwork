@@ -7,7 +7,7 @@ description: "FPF reasoning baseline — ADI cycle (Abduction → Deduction → 
 
 FPF is a problem-framing discipline. Not a methodology, not a checklist. It's the **frame you put on a non-trivial problem before solving**.
 
-The full FPF corpus (222 modules, formal specification) lives at <https://github.com/system5-dev/s5d>. This skill captures the operational subset agents need in-context.
+This skill is a self-contained operational subset — the rules an agent actually executes during a task. The underlying corpus and full formal specification are not published.
 
 ## When to apply
 
@@ -131,9 +131,3 @@ When applying FPF to a deliverable:
 
 That is the loop. Everything else is decoration.
 
-## Deep dive
-
-Full formal corpus, 222 modules with cross-references, edges, and source spec:
-<https://github.com/system5-dev/s5d> — see `skills/s5d/references/fpf/`.
-
-This skill is the operational excerpt. The corpus is the authority when terminology or definitions need to be pinned down.

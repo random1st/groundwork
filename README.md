@@ -77,6 +77,3 @@ Each plugin is a single `SKILL.md` plus `.claude-plugin/plugin.json`.
 
 MIT.
 
-## Related
-
-- Full FPF corpus (formal spec, 222 modules): <https://github.com/system5-dev/s5d>
