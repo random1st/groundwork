@@ -1,0 +1,5 @@
+{
+  "name": "skill-creator",
+  "version": "0.1.0",
+  "description": "Guide and tooling for creating effective Claude Code skills. Bundles init_skill.py, package_skill.py, and design-pattern references."
+}

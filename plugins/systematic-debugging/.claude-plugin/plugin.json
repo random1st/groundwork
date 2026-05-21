@@ -1,0 +1,5 @@
+{
+  "name": "systematic-debugging",
+  "version": "0.1.0",
+  "description": "Root-cause-first debugging methodology — four phases (Investigation, Pattern, Hypothesis, Implementation). Ships with supporting techniques: root-cause-tracing, defense-in-depth, condition-based-waiting."
+}

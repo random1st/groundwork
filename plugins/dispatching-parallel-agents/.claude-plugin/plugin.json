@@ -1,0 +1,5 @@
+{
+  "name": "dispatching-parallel-agents",
+  "version": "0.1.0",
+  "description": "Pattern for splitting independent investigation domains across parallel agents. One agent per problem domain; integrate at the end."
+}

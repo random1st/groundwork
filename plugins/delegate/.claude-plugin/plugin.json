@@ -1,0 +1,5 @@
+{
+  "name": "delegate",
+  "version": "0.1.0",
+  "description": "Unified external AI delegation — route to Codex or Gemini based on cost/quality tradeoffs. Uses raw CLI binaries (codex exec, gemini)."
+}

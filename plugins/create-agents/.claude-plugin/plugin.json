@@ -1,0 +1,5 @@
+{
+  "name": "create-agents",
+  "version": "0.1.0",
+  "description": "Create Claude Code agents — autonomous workers with isolated context and restricted tools. Includes templates and frontmatter schema."
+}
