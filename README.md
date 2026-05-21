@@ -31,11 +31,7 @@ Routing matrix for sending work to another AI CLI. Tells you which model and whi
 
 ### [fpf](plugins/fpf/)
 
-Reasoning baseline. Frame the problem before solving: generate multiple competing hypotheses, derive testable predictions, run the tests, update what you believe. Every factual claim must carry an evidence tag — observed, specified, inferred, or speculative. Apply on any non-trivial problem.
-
-### [fpf-modules](plugins/fpf-modules/)
-
-Deep-dive companion to `fpf`. Fetches the upstream [ailev/FPF](https://github.com/ailev/FPF) spec and builds an agent-navigable modular corpus locally — modules, cards, relation graph, plus agent navigation files (entrypoints, glossary, query-index). No FPF text is bundled; the builder rebuilds fresh against latest upstream on demand. Requires `python3` (stdlib only) and `curl`.
+Reasoning baseline plus a local builder for the full FPF corpus. The `SKILL.md` ships the always-loaded operational subset — ADI cycle, calibration tags, I/D/S discipline, weakest-link heuristic. A bundled `refresh.sh` script pulls the upstream [`ailev/FPF`](https://github.com/ailev/FPF) spec on first use and splits it into navigable modules, cards, and a relation graph; re-runs are a silent no-op when upstream hasn't moved (caches the commit SHA). No FPF text is bundled — every user builds their own derivative locally against the latest upstream. Requires `python3` (stdlib only) and `curl`.
 
 ### [verify](plugins/verify/)
 

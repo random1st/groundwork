@@ -1,5 +1,0 @@
-{
-  "name": "fpf-modules",
-  "version": "0.1.0",
-  "description": "Local builder for an agent-navigable modular FPF corpus. Fetches the upstream spec from ailev/FPF, splits it into modules, cards, and a relation graph, generates agent navigation files (entrypoints, glossary, query-index). No FPF text is bundled — corpus is built fresh on first use."
-}

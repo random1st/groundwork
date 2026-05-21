@@ -7,7 +7,7 @@ description: "FPF reasoning baseline — ADI cycle (Abduction → Deduction → 
 
 FPF (First Principles Framework) is a problem-framing discipline by [Anatoly Levenchuk](https://github.com/ailev). Not a methodology, not a checklist — the **frame you put on a non-trivial problem before solving**.
 
-This skill is a self-contained operational subset: the rules an agent actually executes during a task. For the full formal corpus and deep-dive search, see [Further reading](#further-reading) below.
+This SKILL.md captures the always-loaded operational subset — the rules an agent executes during a task. For exact wording, modules, and cross-references, the plugin also ships a builder that pulls the upstream `ailev/FPF` spec and modularizes it locally on demand. See [Corpus — deep dive into the spec](#corpus--deep-dive-into-the-spec) below.
 
 ## When to apply
 
@@ -131,10 +131,52 @@ When applying FPF to a deliverable:
 
 That is the loop. Everything else is decoration.
 
+## Corpus — deep dive into the spec
+
+For exact wording, full cross-references, or specific module text, run the bundled builder:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/refresh.sh"
+```
+
+First call fetches the upstream `ailev/FPF` spec (~7MB), splits it into modules, cards, a relation graph, and four agent navigation files. Subsequent calls are a silent no-op when upstream hasn't moved (it caches the upstream commit SHA in `<corpus>/.upstream-sha` and compares before doing any work).
+
+Requirements: `python3` (stdlib only) and `curl`. No FPF text is bundled in the plugin itself — the corpus is built fresh on each user's machine against the latest `ailev/FPF`.
+
+After the build, the corpus lives at `${CLAUDE_PLUGIN_ROOT}/corpus/` by default (override with `FPF_CORPUS_DIR=…` or pass as first arg). Layout:
+
+```text
+corpus/
+├── source/FPF-Spec.md        # canonical upstream text (fetched at the cached SHA)
+├── modules/                  # lossless section views with YAML frontmatter
+├── cards/                    # navigation cards (one per section)
+├── graph/                    # relation edges (builds_on, refines, …)
+└── agent/
+    ├── load-policy.md        # navigation rules
+    ├── entrypoints.yaml      # curated route hints for common tasks
+    ├── glossary.yaml         # compact term → module-id map
+    └── query-index.jsonl     # one compact search row per module
+```
+
+### Load policy
+
+Use FPF without loading the full source:
+
+1. Start with `corpus/agent/entrypoints.yaml`, `glossary.yaml`, and `query-index.jsonl`.
+2. Select 1–5 candidate cards by trigger, keyword, title, or query match.
+3. Read only matching `corpus/cards/**/*.card.yaml`.
+4. Load a full `corpus/modules/**/*.md` file only when exact wording, checklist, or rationale is needed.
+5. Expand the graph one hop at a time through `builds_on`, `refines`, and `coordinates_with`.
+6. Cards = navigation. Modules = evidence. `source/FPF-Spec.md` = canonical.
+7. Cite module id plus source span when using FPF in a decision.
+
+### Periodic refresh
+
+Re-run `refresh.sh` to check upstream and rebuild if it has moved. The script makes one cheap GitHub API call to read the current `main` commit SHA; if it matches the cached SHA, it exits silently. Reasonable cadence: once per session before doing deep FPF work, or whenever upstream announces a new version. Force a rebuild regardless of SHA match with `FPF_FORCE=1`.
+
+Corpus schema: `s5d.fpf-corpus/0.1`. Each module carries YAML frontmatter with `id`, source span, source hash, and inferred relations. The relation graph is extracted from explicit `Builds on`, `Refines`, `Prerequisite for`, `Coordinates with`, `Tracks`, and `Tooling for` markers in the source text.
+
 ## Further reading
 
-- **Original FPF spec** — <https://github.com/ailev/FPF>. Anatoly Levenchuk's First Principles Framework: pattern language and core specification for admissible action in engineering, research, and mixed human/AI work. The canonical source for definitions, modules, and cross-references.
-- **`fpf-modules`** (this marketplace) — companion plugin that fetches `ailev/FPF` on demand and splits it into a navigable modular corpus locally (modules, cards, relation graph, entrypoint/glossary/query-index files). No FPF text is bundled; rebuilds against latest upstream. Install when you need on-demand deep search via markdown navigation.
-- **`m0n0x41d/claude-code-fpf`** — separate public Claude Code skill that ships the full FPF spec as an embedded SQLite/FTS5 index plus an `fpf-rag` Go binary. Different access pattern: CLI-tool query rather than markdown navigation. Pick whichever fits your workflow.
-
-This plugin is the always-on operational baseline. The two companions above are deep-dive options when you need the spec text itself.
+- **Original FPF spec** — <https://github.com/ailev/FPF>. Anatoly Levenchuk's First Principles Framework: pattern language and core specification for admissible action in engineering, research, and mixed human/AI work. The canonical source the bundled builder pulls from.
+- **`m0n0x41d/claude-code-fpf`** — separate public Claude Code skill that ships the FPF spec as an embedded SQLite/FTS5 index plus an `fpf-rag` Go binary. Different access pattern: CLI-tool query rather than markdown navigation. Pick whichever fits your workflow.
